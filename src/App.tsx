@@ -53,12 +53,16 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-center">
-          Task Manager
-        </h1>
-        
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 bg-gray-800 text-white p-4 shadow-md z-10">
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-2xl font-bold">Task Manager</h1>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <div className="max-w-2xl mx-auto p-8 pt-24"> {/* pt-24 to offset fixed header */}
         <div className="mb-8">
           <div className="flex gap-2">
             <input
