@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface Task {
   id: string
@@ -9,6 +9,7 @@ interface Task {
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTask, setNewTask] = useState('')
+  const hasLoadedInitialTasks = useRef(false)
 
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks')
@@ -20,10 +21,13 @@ function App() {
       }))
       setTasks(tasksWithDates)
     }
+    hasLoadedInitialTasks.current = true
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    if (hasLoadedInitialTasks.current) {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
   }, [tasks])
 
   const addTask = () => {
