@@ -9,6 +9,7 @@ interface Task {
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTask, setNewTask] = useState('')
+  const [isInitialized, setIsInitialized] = useState(false)
 
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks')
@@ -20,11 +21,14 @@ function App() {
       }))
       setTasks(tasksWithDates)
     }
+    setIsInitialized(true)
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
+    if (isInitialized) {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+  }, [tasks, isInitialized])
 
   const addTask = () => {
     if (newTask.trim()) {
