@@ -55,11 +55,11 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-center">
+        <h1 className="text-xl font-semibold mb-6 text-center">
           Task Manager
         </h1>
         
-        <div className="mb-8">
+        <div className="mb-6">
           <div className="flex gap-2">
             <input
               type="text"
