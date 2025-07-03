@@ -13,7 +13,12 @@ function App() {
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks')
     if (savedTasks) {
-      setTasks(JSON.parse(savedTasks))
+      const parsedTasks = JSON.parse(savedTasks)
+      const tasksWithDates = parsedTasks.map((task: any) => ({
+        ...task,
+        createdAt: new Date(task.createdAt)
+      }))
+      setTasks(tasksWithDates)
     }
   }, [])
 
