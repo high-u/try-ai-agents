@@ -33,6 +33,10 @@ function App() {
     }
   }
 
+  const deleteTask = (taskId: string) => {
+    setTasks(tasks.filter(task => task.id !== taskId))
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
       addTask()
@@ -74,12 +78,20 @@ function App() {
             tasks.map((task) => (
               <div
                 key={task.id}
-                className="bg-gray-800 p-4 rounded-md border border-gray-700"
+                className="bg-gray-800 p-4 rounded-md border border-gray-700 flex justify-between items-start"
               >
-                <p className="text-white">{task.text}</p>
-                <p className="text-gray-400 text-sm mt-1">
-                  {new Date(task.createdAt).toLocaleString()}
-                </p>
+                <div className="flex-1">
+                  <p className="text-white">{task.text}</p>
+                  <p className="text-gray-400 text-sm mt-1">
+                    {new Date(task.createdAt).toLocaleString()}
+                  </p>
+                </div>
+                <button
+                  onClick={() => deleteTask(task.id)}
+                  className="ml-4 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors text-sm"
+                >
+                  Delete
+                </button>
               </div>
             ))
           )}
