@@ -56,7 +56,7 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center">
-          Task Manager
+          タスク管理
         </h1>
         
         <div className="mb-8">
@@ -66,14 +66,14 @@ function App() {
               value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Add a new task..."
+              placeholder="新しいタスクを追加..."
               className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <button
               onClick={addTask}
               className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
             >
-              Add
+              追加
             </button>
           </div>
         </div>
@@ -81,7 +81,7 @@ function App() {
         <div className="space-y-2">
           {tasks.length === 0 ? (
             <p className="text-gray-400 text-center py-8">
-              No tasks yet. Add one above!
+              タスクはまだありません。上から追加してください！
             </p>
           ) : (
             tasks.map((task) => (
@@ -99,7 +99,7 @@ function App() {
                   onClick={() => deleteTask(task.id)}
                   className="ml-4 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors text-sm"
                 >
-                  Delete
+                  削除
                 </button>
               </div>
             ))
